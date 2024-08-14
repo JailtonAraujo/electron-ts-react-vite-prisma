@@ -5,22 +5,22 @@ import path from 'node:path'
 
 const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient()
-async function main() {
-  const users = await prisma.people.findMany()
-  console.log(users)
-}
+// const { PrismaClient } = require('@prisma/client');
+// const prisma = new PrismaClient()
+// async function main() {
+//   const users = await prisma.people.findMany()
+//   console.log(users)
+// }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+// main()
+//   .then(async () => {
+//     await prisma.$disconnect()
+//   })
+//   .catch(async (e) => {
+//     console.error(e)
+//     await prisma.$disconnect()
+//     process.exit(1)
+//   })
 
 // The built directory structure
 //
