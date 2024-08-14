@@ -1,7 +1,8 @@
 import { Button, Checkbox, Col, Form, Input, Row } from "antd";
+import { useNavigate } from "react-router-dom";
 import type { FormProps } from 'antd';
 import { Content } from "antd/es/layout/layout";
-import "./styles.css"
+import "./styles.less"
 
 const Login = () => {
 
@@ -9,9 +10,11 @@ const Login = () => {
         username?: string;
         password?: string
     };
+    const navigate = useNavigate();
 
     const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
         console.log('Success:', values);
+        navigate("/home");
     };
 
     const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {

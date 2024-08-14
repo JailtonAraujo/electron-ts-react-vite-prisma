@@ -1,6 +1,6 @@
-import Login from "./pages/Login";
 import { ConfigProvider } from 'antd';
-
+import Login from "./pages/Login";
+import Home from './pages/Home';
 
 import {
   createBrowserRouter,
@@ -12,6 +12,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Login />,
   },
+  {
+    path: "/home",
+    element: <Home />,
+  },
 ]);
 
 function App() {
@@ -21,8 +25,7 @@ function App() {
         token: {
           // Seed Token
           colorPrimary: '#00b96b',
-          borderRadius: 2,
-          colorBgContainer: '#f6ffed',
+          borderRadius: 2
         },
       }}
     >
