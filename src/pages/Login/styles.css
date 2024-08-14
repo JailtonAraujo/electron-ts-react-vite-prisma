@@ -1,8 +1,23 @@
 .login{
-    background-color: #87CEFA;
+    background-color: #B9CDCB;
     border-color: #000000;
     padding: 1em;
     width: 400px;
     height: 300px;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.container {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    background-color: #fdf9e5;
+    background-image: url('../../assets/banner.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; 
+  }

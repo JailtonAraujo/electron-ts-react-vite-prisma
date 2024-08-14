@@ -30,24 +30,24 @@ const Login = () => {
                     style={{width:"100%"}}
                 >
                     <Form.Item<FieldType>
-                        label="Username"
+                        label="Usuario:"
                         name="username"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
+                        rules={[{ required: true, message: 'Insira o usuario!' }]}
                     >
                         <Input />
                     </Form.Item>
 
                     <Form.Item<FieldType>
-                        label="Password"
+                        label="Senha:"
                         name="password"
-                        rules={[{ required: true, message: 'Please input your password!' }]}
+                        rules={[{ required: true, message: 'Insira a senha!' }]}
                     >
                         <Input.Password />
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" style={{width:"100%"}}>
-                            Submit
+                        <Button type="primary" htmlType="submit" style={{width:"100%", marginTop:"20px", height:"40px"}}>
+                            ENTRAR
                         </Button>
                     </Form.Item>
                 </Form>
