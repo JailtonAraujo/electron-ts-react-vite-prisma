@@ -1,6 +1,7 @@
 import { ConfigProvider } from 'antd';
 import Login from "./pages/Login";
 import Home from './pages/Home';
+import Customers from './pages/Customers';
 
 import {
   createBrowserRouter,
@@ -15,6 +16,12 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+    children: [
+      {
+        path: "customers",
+        element: <Customers />,
+      },
+    ],
   },
 ]);
 

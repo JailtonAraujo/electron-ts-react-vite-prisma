@@ -15,7 +15,7 @@ const Home = () => {
             <Sidebar />
             <Layout>
                 <Header style={{ padding: 0, background: colorBgContainer }} />
-                <Content style={{ margin: '24px 16px 0' }}>
+                <Content style={{ padding:"3em" }}>
                     <div >
                         <Outlet />
                     </div>
