@@ -1,6 +1,12 @@
-*{padding: 0; margin: 0; box-sizing: border-box; font-family: sans-serif;}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
-body, :root{
+body,
+:root {
   min-width: 100vw;
   min-height: 100vh;
 }
@@ -14,3 +20,25 @@ body, :root{
   justify-content: center;
   padding: 2em;
 }
+
+.ant-modal-content {
+  padding: 0px !important; 
+
+  .ant-modal-header {
+    padding: 15px 24px 10px 24px !important;
+    border-bottom: 1px solid #C9C9C9; 
+  }
+
+  .ant-modal-body {
+    padding: 15px 24px 10px 24px !important;  
+  }
+
+  .ant-modal-footer {
+    padding: 15px 24px 15px 24px !important;
+    border-top: 1px solid #C9C9C9;   
+  }
+}
+
+// .ant-menu-item-active{
+//   background-color: #000 !important;
+// }

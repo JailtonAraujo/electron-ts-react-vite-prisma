@@ -1,0 +1,7 @@
+model customer {
+  id    Int     @id @default(autoincrement())
+  email String?
+  name  String?
+  username String @unique
+  password String?
+}

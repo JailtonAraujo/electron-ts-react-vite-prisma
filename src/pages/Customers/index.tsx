@@ -1,6 +1,7 @@
 import { Button, Col, Row, Table, Typography } from "antd";
 import { Content } from "antd/es/layout/layout";
 import Form from "./Form";
+
 import { ReactElement, useRef } from "react";
 
 const columns = [
@@ -65,7 +66,7 @@ const Customers = () => {
                     />
                 </Col>
             </Row>
-            <Form ref={formModalRef} title="Novo"/>
+            <Form ref={formModalRef} title="Novo Cliente"/>
         </Content>
     )
 }
