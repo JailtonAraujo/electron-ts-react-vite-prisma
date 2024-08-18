@@ -20,7 +20,7 @@ generator client {
 `;
 
 const schemaContent = schemaFiles
-    .map((file) => fs.readFileSync(path.join(schemaDir, file), 'utf8'))
+    .map((file) => fs.readFileSync(path.join(schemaDir, `schemas/${file}`), 'utf8'))
     .join('\n\n');
 
 fs.writeFileSync(outputFile, `${header}\n\n${schemaContent}`);

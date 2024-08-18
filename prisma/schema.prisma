@@ -9,10 +9,13 @@ generator client {
   }
 
 
-model customer {
+model sys_user {
   id    Int     @id @default(autoincrement())
+  uid String @default(uuid())
+  active Boolean @default(true)
   email String?
   name  String?
+  phone String?
   username String @unique
   password String?
 }

@@ -8,7 +8,7 @@
     "build": "tsc && vite build && electron-builder",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prisma:generate": "node scripts/mergeSchemas.cjs && prisma migrate dev"
+    "prisma:sync": "node scripts/mergeSchemas.cjs && prisma migrate dev"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",

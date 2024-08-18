@@ -36,7 +36,8 @@ const Sidebar = () => {
                 {
                     key: "users",
                     label: "Usuarios",
-                    icon: <UserOutlined />
+                    icon: <UserOutlined />,
+                    onClick: () => {navigate('users')}
                 },
                 {
                     key: "products",

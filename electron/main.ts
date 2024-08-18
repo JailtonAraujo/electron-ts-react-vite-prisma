@@ -2,35 +2,14 @@ import { app, BrowserWindow } from 'electron'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
+import {setupIpcHandless} from './ipcHandlers';
 
 const require = createRequire(import.meta.url)
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-// const { PrismaClient } = require('@prisma/client');
-// const prisma = new PrismaClient()
-// async function main() {
-//   const users = await prisma.people.findMany()
-//   console.log(users)
-// }
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const { ipcMain } = require('electron');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
-// main()
-//   .then(async () => {
-//     await prisma.$disconnect()
-//   })
-//   .catch(async (e) => {
-//     console.error(e)
-//     await prisma.$disconnect()
-//     process.exit(1)
-//   })
-
-// The built directory structure
-//
-// ├─┬─┬ dist
-// │ │ └── index.html
-// │ │
-// │ ├─┬ dist-electron
-// │ │ ├── main.js
-// │ │ └── preload.mjs
-// │
 process.env.APP_ROOT = path.join(__dirname, '..')
 
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
@@ -47,6 +26,8 @@ function createWindow() {
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.mjs'),
+      nodeIntegration:true,
+      contextIsolation:true
     },
   })
 
@@ -79,6 +60,7 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }
-})
+});
 
-app.whenReady().then(createWindow)
+setupIpcHandless(ipcMain, prisma);
+app.whenReady().then(createWindow);
