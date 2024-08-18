@@ -4,11 +4,12 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import {setupIpcHandless} from './ipcHandlers';
 
-const require = createRequire(import.meta.url)
+const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const { ipcMain } = require('electron');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const bcrypt = require('bcrypt');
 
 process.env.APP_ROOT = path.join(__dirname, '..')
 
@@ -62,5 +63,5 @@ app.on('activate', () => {
   }
 });
 
-setupIpcHandless(ipcMain, prisma);
+setupIpcHandless({ipcMain, prisma, bcrypt});
 app.whenReady().then(createWindow);

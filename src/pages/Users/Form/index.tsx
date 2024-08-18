@@ -38,10 +38,10 @@ const FormUser = ({
     const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
         setLoading(true);
         window.ipcRenderer.invoke('user:create', values).then((result) => {
-            console.log(result);
             setLoading(false);
             notification.success({
-                message:"Usuario criado com sucesso!"
+                message:"Sucesso!",
+                description:"Usuario criado com sucesso."
             });
             handleClose();
         }).catch(error => {
