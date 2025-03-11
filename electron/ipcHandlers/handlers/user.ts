@@ -21,10 +21,26 @@ const createNewUser = async (prisma:any, userData:User, bcrypt:any) => {
     });
 }
 
+const listUsers = async (prisma:any) => {
+  const users = await prisma.sys_user.findMany({
+    include:{
+      id:false,
+      password:false
+    }
+  });
+  const usersTotal = await prisma.sys_user.count();
+
+  return {usersTotal, users};
+}
+
 export function setupUserIpcHandlers(tools:Tools) {
   const {prisma, ipcMain, bcrypt} = tools;
 
   ipcMain.handle(`${IPC_NAME}:create`, async (event:any, userData:User) => {
     return await createNewUser(prisma, userData, bcrypt);
+  });
+
+  ipcMain.handle(`${IPC_NAME}:list`, async(event:any, props:any) => {
+    return await listUsers(tools.prisma);
   });
 }

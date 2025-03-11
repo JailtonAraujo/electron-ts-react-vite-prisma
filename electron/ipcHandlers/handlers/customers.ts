@@ -1,12 +1,17 @@
 import { User } from "../../model/User";
+import { Tools } from "../Tools";
 
-const createNewUser = async (prisma:any, userData:User) => {
+const IPC_NAME = "customer";
+
+const createNewCustomer = async (prisma: any, userData: User, bcrypt: any) => {
 
 }
 
 
-export function setupCustomersIpcHandlers(ipcMain:any, prisma:any) {
-  ipcMain.handle('customer:post', async (event:any, userData:User) => {
-    return await createNewUser(prisma, userData);
+export function setupCustomersIpcHandlers(tools: Tools) {
+  const { prisma, ipcMain, bcrypt } = tools;
+
+  ipcMain.handle(`${IPC_NAME}:create`, async (event: any, userData: User) => {
+    return await createNewCustomer(prisma, userData, bcrypt);
   });
 }

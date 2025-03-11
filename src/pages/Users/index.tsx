@@ -2,49 +2,59 @@ import { Button, Col, Row, Table, Typography } from "antd";
 import { Content } from "antd/es/layout/layout";
 import Form from "./Form";
 
-import { ReactElement, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const columns = [
     {
-        title: 'Name',
+        title: 'Nome',
         dataIndex: 'name',
         key: 'name',
     },
     {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
+        title: 'Nome de Usuario',
+        dataIndex: 'username',
+        key: 'username',
     },
     {
         title: 'E-mail',
-        dataIndex: 'mail',
-        key: 'mail',
-    },
-]
-
-const data = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        mail: 'jailton@gmail.com'
+        dataIndex: 'email',
+        key: 'email',
     },
     {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        mail: 'jailton@gmail.com'
-    },
-    {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        mail: 'jailton@gmail.com'
+        title: 'Telefone',
+        dataIndex: 'phone',
+        key: 'phone',
     },
 ]
 
 const Users = () => {
     const formModalRef = useRef<any>();
+    const [loading, setLoading] = useState(false);
+    const [userData, setUserData] = useState([]);
+    const [total, setTotal] = useState(0);
+    const [page, setPage] = useState({
+        page:1,
+        size:5
+    });
+    
+    const onLoadUsers = () => {
+        setLoading(true);
+        window.ipcRenderer.invoke('user:list', {
+            pagination:page
+        }).then((data) => {
+            const {usersTotal, users} = data;
+            setLoading(false);
+            setUserData(users);
+            setTotal(usersTotal);
+        }).catch((error) => {
+            setLoading(false);
+            console.error(error);
+        });
+    }
+
+    useEffect(() => {
+        onLoadUsers();
+    }, []);
 
     return (
         <Content>
@@ -62,7 +72,16 @@ const Users = () => {
             <Row style={{marginTop:"15px"}}>
                 <Col span={24}>
                     <Table
-                        columns={columns} dataSource={data}
+                        loading={loading}
+                        columns={columns} 
+                        dataSource={userData}
+                        pagination={{
+                            onChange: (currentPage) => setPage({page:currentPage, size:page.size}),
+                            pageSize: page.size,
+                            total: total,
+                            current: page.page
+                        }}
+    
                     />
                 </Col>
             </Row>

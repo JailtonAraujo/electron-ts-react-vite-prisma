@@ -101,7 +101,7 @@ const FormUser = ({
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Row justify={'space-between'} align={'middle'}>
+                    <Row >
                         <Col span={24}>
                             <Form.Item<FieldType>
                                 label="Nome:"
@@ -112,8 +112,8 @@ const FormUser = ({
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Row justify={'space-between'} align={'middle'}>
-                        <Col>
+                    <Row gutter={16}>
+                        <Col span={12}>
                             <Form.Item<FieldType>
                                 label="E-mail:"
                                 name="email"
@@ -122,7 +122,7 @@ const FormUser = ({
                                 <Input />
                             </Form.Item>
                         </Col>
-                        <Col>
+                        <Col span={12}>
                             <Form.Item<FieldType>
                                 label="Telefone:"
                                 name="phone"
@@ -132,8 +132,8 @@ const FormUser = ({
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Row justify={'space-between'} align={'middle'}>
-                        <Col>
+                    <Row gutter={16}>
+                        <Col span={12}>
                             <Form.Item<FieldType>
                                 label="Nome de Usuario:"
                                 name="username"
@@ -142,7 +142,7 @@ const FormUser = ({
                                 <Input />
                             </Form.Item>
                         </Col>
-                        <Col>
+                        <Col span={12}>
                             <Form.Item<FieldType>
                                 label="Senha:"
                                 name="password"
